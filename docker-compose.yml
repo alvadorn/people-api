@@ -8,9 +8,13 @@ services:
       - .:/home/app
     command: go run cmd/main.go
     ports:
-      - '10080:10080'
+      - '18080:18080'
     depends_on:
       - redis
+    environment:
+      REDIS_URL: 'localhost:6379'
+      CACHE_TIME_TTL_IN_HOURS: '1'
+      WIKIMEDIA_BASE_API_URL: 'https://en.wikipedia.org/w/api.php?action=query&formatversion=2&format=json&titles=%s&prop=revisions&rvprop=content&rvslots=*&rvlimit=1'
 
   redis:
     image: redis:6-alpine
