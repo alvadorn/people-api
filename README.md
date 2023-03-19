@@ -7,16 +7,26 @@ To run this project, you must have installed Docker and Docker Compose.
 
 ###  Run command
 
-> docker-compose start
+> docker-compose up -d
 
 ### API URL
-> http://localhost:10080/api/v1/person/<name>
+> :warning: **Warning**: This API URL only responds to HTTP **GET** method.
 
-Where token `<name>` should be substituted by the interested person’s name.
+The api URL is http://localhost:10080/api/v1/person/<name> where token `<name>` should be substituted by the interested person’s name.
 
-> :warning: This API URL only responds to HTTP **GET** method.
 
 ## API output schema
 
+### in case of person exists
+You will receive a http status **200** and you will have an output like the following:
 
+```json
+{
+  "person": {
+    "name": "",
+    "short_description":"", 
+            ""
+  }
+}
+```
 

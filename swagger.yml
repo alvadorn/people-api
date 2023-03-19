@@ -1,0 +1,65 @@
+openapi: 3.0.0
+info:
+  title: Swagger People API
+  version: 'v1'
+servers:
+  - url: http://localhost:10080/api/v1
+tags:
+  - name: people
+    description: Everything about people
+paths:
+  /people/{name}:
+    get:
+      tags:
+        - people
+      summary: Retrieve information of a person
+      description: Retrieve information of a person by his/her/their name
+      operationId: getPerson
+      parameters:
+        - name: name
+          in: path
+          description: name of some person to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+        '404':
+          description: Pet not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+components:
+  schemas:
+    Person:
+      required:
+        - name
+      type: object
+      properties:
+        id:
+          type: string
+          example: 10
+        name:
+          type: string
+          example: doggie
+        short_description:
+          type: string
+          nullable: true
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+

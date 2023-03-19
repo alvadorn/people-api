@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  api:
+    image: golang:1.19-alpine
+    working_dir: /home/app
+    volumes:
+      - .:/home/app
+    command: go run cmd/main.go
+    ports:
+      - '10080:10080'
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:6-alpine
+    ports:
+      - '6379:6379'
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui:v4.18.1
+    platform: linux/amd64
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./swagger.yml:/swagger/swagger.yml:ro
+    environment:
+      SWAGGER_JSON: /swagger/swagger.yml
+    depends_on:
+      - api
