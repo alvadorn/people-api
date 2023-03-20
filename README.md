@@ -21,7 +21,7 @@ To run this project, you must have installed Docker and Docker Compose.
 ### API URL
 > **Warning**: This API URL only responds to HTTP **GET** method.
 
-The api URL is http://localhost:18080/api/v1/person/<name> where token `<name>` should be substituted by the interested person’s name.
+The api URL is `http://localhost:18080/api/v1/person/<name>` where token `<name>` should be substituted by the interested person’s name.
 
 
 ## API output schema
