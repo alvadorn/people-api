@@ -1,4 +1,4 @@
-# Short Description API
+# People API
 
 This repository represents a simple API to get people's data from those whose Wikipedia page exists in English.
 
